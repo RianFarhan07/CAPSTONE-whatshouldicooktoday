@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= data.strMeal %> Recipe</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title"><%= data.strMeal %></h1>
+      <div class="content">
+        <div class="left-column">
+          <div class="image-container">
+            <img
+              src="<%= data.strMealThumb %>"
+              alt="<%= data.strMeal %>"
+              class="recipe-img"
+            />
+          </div>
+          <div class="recipe-info">
+            <p class="recipe-category">Category: <%= data.strCategory %></p>
+            <p class="recipe-area">Cuisine: <%= data.strArea %></p>
+          </div>
+          <% if(data.strYoutube) { %>
+          <a href="<%= data.strYoutube %>" target="_blank" class="video-link"
+            >Watch Video</a
+          >
+          <% } %>
+          <button onclick="location.reload()" class="refresh-btn">
+            New Recipe
+          </button>
+        </div>
+        <div class="right-column">
+          <div class="ingredients">
+            <h2>Ingredients</h2>
+            <ul class="ingredients-list">
+              <% for(let i = 1; i <= 20; i++) { %> <%
+              if(data[`strIngredient${i}`]) { %>
+              <li class="ingredient-item">
+                <%= data[`strIngredient${i}`] %> - <%= data[`strMeasure${i}`] %>
+              </li>
+              <% } %> <% } %>
+            </ul>
+          </div>
+          <div class="instructions">
+            <h2>Instructions</h2>
+            <ol class="instructions-list">
+              <% data.strInstructions.split('.').filter(step => step.trim() !==
+              '').forEach((step, index) => { %>
+              <li class="instruction-item"><%= step.trim() %>.</li>
+              <% }); %>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
