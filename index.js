@@ -4,14 +4,13 @@ import bodyParser from "body-parser";
 import dotenv from "dotenv";
 dotenv.config();
 
-app.set("view engine", "ejs");
-app.set("views", "./views");
-
 const app = express();
 const port = process.env.PORT;
 const API_URL = process.env.API_URL;
 
 app.use(express.static("public"));
+app.set("view engine", "ejs");
+app.set("views", "./views");
 app
   .use(bodyParser.urlencoded({ extended: true }))
 
