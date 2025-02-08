@@ -5,7 +5,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = process.env.port;
+const port = process.env.PORT;
 const API_URL = process.env.API_URL;
 
 app.use(express.static("public"));
