@@ -5,8 +5,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
-const API_URL = process.env.API_URL;
+const port = process.env.PORT || 3000;
+const API_URL =
+  process.env.API_URL || "https://www.themealdb.com/api/json/v1/1/";
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
